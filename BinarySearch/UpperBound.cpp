@@ -5,7 +5,7 @@ int lower_bound(vector<int> &arr,int n,int x){
     int ans=n;
     while(low<=high){
         int mid=(low+high)/2;
-        if(arr[mid]>=x){
+        if(arr[mid]>x){
             ans=mid;
             high=mid-1;
         }else{
@@ -30,5 +30,4 @@ int main(){
     return 0;
 }
 
-
-//lb=lower_bound(arr.begin(),arr.end(),target)-arr.begin();
+//ub=upper_bound(arr.begin(),arr.end(),target)-arr.begin();
