@@ -108,6 +108,82 @@ Node* deletingKthElement(Node* head,int k){
 
 }
 
+Node* insertingtoHead(Node* head,int val){
+    Node* newNode=new Node(val);
+    if(head==NULL){
+        return newNode;
+    }
+    newNode->next=head;
+    head->prev=newNode;
+    return newNode;
+}
+
+Node* insertingtoTail(Node* head,int val){
+    Node* newNode=new Node(val);
+    if(head==NULL){
+        return newNode;
+    }
+ 
+    if(head->next==NULL){
+        newNode->next=head;
+        head->prev=newNode;
+        return newNode;
+    }
+
+    Node* temp=head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    
+    Node* back=temp->prev;
+    back->next=newNode;
+    newNode->prev=back;
+    newNode->next=temp;
+    temp->prev=newNode;
+    return head;
+
+}
+
+Node* insertingtoKthElement(Node* head,int val,int k){
+    Node* newNode=new Node(val);
+    if(head==NULL){
+        return newNode;
+    }
+    if(k==1){
+        newNode->next=head;
+        head->prev=newNode;
+        return newNode;
+    }
+    
+    Node* temp=head;
+    int count=0;
+    while(temp!=NULL){
+        count++;
+        if(count==k){
+            break;
+        }
+        temp=temp->next;
+    }
+
+    if(temp==NULL){
+        Node* tail=head;
+        while(tail->next!=NULL){
+            tail=tail->next;
+        }
+        tail->next=newNode;
+        newNode->prev=tail;
+        return head;
+    }
+
+    Node* back=temp->prev;
+
+    back->next=newNode;
+    newNode->prev=back;
+    newNode->next=temp;
+    temp->prev=newNode;
+    return head;
+}
+
 int main(){
     vector<int> arr={1,2,3,4,5};
     Node* head=covertArraytoDLL(arr);
@@ -118,5 +194,12 @@ int main(){
     // printDLL(head);
     // head=deletingKthElement(head,7);
     // printDLL(head);
+    // head=insertingtoHead(head,0);
+    // printDLL(head);
+    // head=insertingtoTail(head,10);
+    // printDLL(head);
+    // head=insertingtoKthElement(head,100,3);
+    // printDLL(head);
+
     return 0;
 }
