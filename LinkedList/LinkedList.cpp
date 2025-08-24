@@ -123,5 +123,6 @@ int main(){
     // printLL(head);
     head=insertingTail(head,6);
     printLL(head);
+    //inserting of the kth element is pending.
     return 0;
 }
