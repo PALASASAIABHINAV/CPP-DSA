@@ -88,6 +88,27 @@ Node* deletekthElement(Node* head,int k){
     return head;
 }
 
+/*Insertion of the Linked List*/
+Node* insertinginHead(Node* head,int val){
+    Node* temp=new Node(val);
+    temp->next=head;
+    return temp;
+}
+
+Node* insertingTail(Node* head,int val){
+    if(head==NULL){
+        return new Node(val);
+    }
+    Node* temp=head;
+    while(temp->next!=nullptr){
+        temp=temp->next;
+    }
+    Node* newNode=new Node(val);
+    temp->next=newNode;
+    
+    return head;
+}
+
 int main(){
     vector<int> arr={1,2,3,4,5};
     Node* head=convertArraytoLL(arr);
@@ -96,7 +117,11 @@ int main(){
     // cout<<searchofLL(head,9);
     // head=deletingofHead(head);
     // printLL(head);
-    head=deletekthElement(head,7);
+    // head=deletekthElement(head,7);
+    // // printLL(head);
+    // head=insertinginHead(head,10);
+    // printLL(head);
+    head=insertingTail(head,6);
     printLL(head);
     return 0;
 }
