@@ -184,6 +184,23 @@ Node* insertingtoKthElement(Node* head,int val,int k){
     return head;
 }
 
+Node* reverseADLL(Node* head){
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    Node* last=NULL;
+    Node* current=head;
+    while(current!=NULL){
+        last=current->prev;
+
+        current->prev=current->next;
+        current->next=last;
+
+        current=current->prev;
+    }
+    return last->prev;
+}
+
 int main(){
     vector<int> arr={1,2,3,4,5};
     Node* head=covertArraytoDLL(arr);
@@ -200,6 +217,9 @@ int main(){
     // printDLL(head);
     // head=insertingtoKthElement(head,100,3);
     // printDLL(head);
+    printDLL(head);
+    head=reverseADLL(head);
+    printDLL(head);
 
     return 0;
 }
